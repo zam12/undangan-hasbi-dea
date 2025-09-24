@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Pernikahan Hasbi & Dea</title>
+  <meta name="description" content="Undangan Pernikahan Hasbi & Dea - 29 September 2025">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #fdfaf4;
+      color: #4a3c2a;
+      scroll-behavior: smooth;
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("img/hero.jpg") center/cover no-repeat;
+      text-align: center;
+      color: #fff;
+      flex-direction: column;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .btn-undangan {
+      background: #c49b63;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-undangan:hover { background: #b38b55; }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .count-box {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 15px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    section { max-width: 850px; margin: auto; padding: 50px 20px; text-align: center; }
+    h2 { font-size: 2rem; margin-bottom: 20px; color: #8b6b48; }
+    p { font-size: 1.1rem; line-height: 1.6; }
+
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 10px; margin-top: 15px; }
+    .gallery img { width: 100%; border-radius: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+
+    iframe.map-frame { width: 100%; height: 300px; border: none; border-radius: 15px; margin-top: 15px; }
+
+    .rekening {
+      background: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin: 15px auto;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+    .rekening img { width: 60px; height: 60px; object-fit: contain; }
+    .rekening .info { text-align: left; font-size: 1rem; }
+    .rekening button {
+      background: #c49b63;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 999; }
+    .popup-content { background: #fff; padding: 20px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .popup-content input, .popup-content select { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
+    .popup-content button { background: #c49b63; color: #fff; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer; margin-top: 10px; }
+
+    .love { position: fixed; top: -20px; font-size: 20px; color: white; opacity: 0.7; pointer-events: none; animation: fall 8s linear infinite; }
+    @keyframes fall { to { transform: translateY(110vh); opacity: 0; } }
+
+    #music-control { position: fixed; bottom: 20px; right: 20px; background: #c49b63; color: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Falling hearts -->
+  <div class="love" style="left:10%; animation-delay:0s;">❤</div>
+  <div class="love" style="left:30%; animation-delay:1s;">❤</div>
+  <div class="love" style="left:50%; animation-delay:2s;">❤</div>
+  <div class="love" style="left:70%; animation-delay:3s;">❤</div>
+  <div class="love" style="left:90%; animation-delay:4s;">❤</div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 style="font-size:2.5rem;">Hasbi & Dea</h1>
+      <p>29 September 2025</p>
+      <button class="btn-undangan" onclick="document.getElementById('ayat').scrollIntoView({behavior:'smooth'});">Lihat Undangan</button>
+      <div class="countdown">
+        <div class="count-box"><span id="days">00</span><br>Hari</div>
+        <div class="count-box"><span id="hours">00</span><br>Jam</div>
+        <div class="count-box"><span id="minutes">00</span><br>Menit</div>
+        <div class="count-box"><span id="seconds">00</span><br>Detik</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ayat Qur'an -->
+  <section id="ayat">
+    <h2>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h2>
+    <p style="font-size:1.5rem;line-height:2;direction:rtl;text-align:center;">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوٓا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+    </p>
+    <p><em>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir." <br><strong>(QS. Ar-Rum: 21)</strong></em></p>
+
+    <!-- Kata pembuka -->
+    <p style="margin-top:30px;font-size:1.1rem;">
+      السلام عليكم ورحمة الله وبركاته <br><br>
+      Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu. <br><br>
+      والسلام عليكم ورحمة الله وبركاته
+    </p>
+  </section>
+
+  <!-- Acara -->
+  <section id="acara">
+    <h2>Save The Date</h2>
+    <p><strong>Senin, 29 September 2025</strong><br>08.00 WIB - Selesai</p>
+    <p><strong>Tempat:</strong><br>Kp. Pantilaksana RT 001 RW 006 Desa Cikawungading Kec. Cipatujah</p>
+    <iframe class="map-frame" src="https://www.google.com/maps?q=Kp.+Pantilaksana+RT+001+RW+006+Desa+Cikawungading+Kec.+Cipatujah&output=embed"></iframe>
+  </section>
+
+  <section>
+    <h2>Mempelai</h2>
+    <div class="gallery">
+      <div>
+        <img src="img/hasbi.jpg" alt="Mempelai Pria">
+        <p>Anak Kedua dari<br>(Alm) H.Dadan Hindani & Ibu Hj. Yani Nuryani</p>
+      </div>
+      <div>
+        <img src="img/dea.jpg" alt="Mempelai Wanita">
+        <p>Anak Pertama dari<br>Bapak Acep Suyana & Ibu Dewi Yulianti</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Galeri Prewed</h2>
+    <div class="gallery">
+      <img src="img/galeri1.jpg" alt="Prewed 1">
+      <img src="img/galeri2.jpg" alt="Prewed 2">
+    </div>
+  </section>
+
+  <section>
+    <h2>Kirim Hadiah</h2>
+    <p>Bagi keluarga dan sahabat yang berhalangan hadir, dapat mengirimkan hadiah melalui:</p>
+    <div class="rekening">
+      <img src="img/bri-logo.png" alt="BRI">
+      <div class="info"><strong>Hasbi Assidqi</strong>BRI: 437701009596534</div>
+      <button onclick="copyRekening('437701009596534')">Copy</button>
+    </div>
+    <div class="rekening">
+      <img src="img/bri-logo.png" alt="BRI">
+      <div class="info"><strong>Dea Sopia</strong>BRI: 437501017612538</div>
+      <button onclick="copyRekening('437501017612538')">Copy</button>
+    </div>
+    <p id="copy-notif" style="display:none;color:green;font-weight:bold;">Nomor rekening telah disalin!</p>
+  </section>
+
+  <section>
+    <h2>Konfirmasi Kehadiran</h2>
+    <button class="btn-undangan" onclick="openPopup()">Isi RSVP</button>
+  </section>
+
+  <div class="popup" id="rsvp-popup">
+    <div class="popup-content">
+      <h3>Konfirmasi Kehadiran</h3>
+      <input type="text" id="nama" placeholder="Nama" required>
+      <select id="status" required>
+        <option value="">Pilih Kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+      <input type="number" id="jumlah" placeholder="Jumlah Tamu" min="1" required>
+      <button onclick="kirimRSVP()">Kirim</button>
+      <button onclick="closePopup()" style="margin-top:10px;background:#999;">Tutup</button>
+    </div>
+  </div>
+
+  <section>
+    <h2>Ucapan Terima Kasih</h2>
+    <p><em>Wassalamu’alaikum Warahmatullahi Wabarakatuh</em></p>
+    <p style="font-size:0.9rem;color:#777;margin-top:30px;">Made by <strong>Anaku Photocopy - Portal Pamijahan</strong></p>
+  </section>
+
+  <!-- Musik -->
+  <audio id="bg-music" loop>
+    <source src="audio.mp3" type="audio/mp3">
+  </audio>
+  <div id="music-control">🔊</div>
+
+  <script>
+    function openPopup(){ document.getElementById('rsvp-popup').style.display = 'flex'; }
+    function closePopup(){ document.getElementById('rsvp-popup').style.display = 'none'; }
+    function kirimRSVP(){
+      let nama = document.getElementById('nama').value.trim();
+      let status = document.getElementById('status').value;
+      let jumlah = document.getElementById('jumlah').value;
+      if(!nama || !status || !jumlah){ alert("Lengkapi semua field!"); return; }
+      alert("Terima kasih! RSVP Anda telah terkirim.");
+      closePopup();
+    }
+
+    function copyRekening(nomor){
+      navigator.clipboard.writeText(nomor).then(()=>{
+        let notif = document.getElementById('copy-notif');
+        notif.style.display='block';
+        setTimeout(()=> notif.style.display='none', 2000);
+      });
+    }
+
+    // Countdown
+    const countDownDate = new Date("Sep 29, 2025 08:00:00").getTime();
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      if (distance < 0) {
+        document.querySelector(".countdown").innerHTML = "<div class='count-box'>Acara Sedang Berlangsung 🎉</div>";
+        clearInterval(x);
+        return;
+      }
+      document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+    }, 1000);
+
+    // Music Control
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-control');
+    function tryPlay(){ music.play().catch(()=>{}); }
+    tryPlay();
+    musicBtn.addEventListener('click', ()=>{
+      if(music.paused){ music.play(); musicBtn.innerHTML='🔊'; } else { music.pause(); musicBtn.innerHTML='🔈'; }
+    });
+  </script>
+</body>
+</html>
